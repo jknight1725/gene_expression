@@ -15,8 +15,6 @@ module MRNA_helper
   end
 
   #benchmark n = 1,000,000
-  # amino seq 70.611422  51.972103 122.583525 (123.924381)
-  # lets get that down
   # amino seq  4.704853   0.108571   4.813424 (  4.834696)
   def amino_acid_sequence
     arr = translation.chars
