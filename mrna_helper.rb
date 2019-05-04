@@ -1,26 +1,21 @@
 module MRNA_helper
 
-  def rna_base_pair
-    {
-        'A' => 'U',
-        'T' => 'A',
-        'G' => 'C',
-        'C' => 'G',
-        '3' => '5',
-        '5' => '3',
-        "`" => "`",
-        "-" => "-",
-        " " => " "
-    }
+  def start_codon
+    'AUG'
+  end
+
+  def rna_base_pair(strand)
+    strand.tr!("ATGC35","UACG53")
   end
 
   #benchmark n = 1,000,000
-  # amino seq  4.704853   0.108571   4.813424 (  4.834696)
+  # 4.548660   0.078037   4.626697 (  4.629168)
   def amino_acid_sequence
     arr = translation.chars
     amino_sequence = ''
+    #codon = arr[0,3].join
     codon = arr.first(3).join
-    while (codon != 'AUG') do
+    while codon != start_codon do
       arr.shift
       codon = arr.first(3).join
     end
