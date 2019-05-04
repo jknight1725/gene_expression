@@ -10,20 +10,9 @@ module DNA_helper
   def dash
     ' - '
   end
-
-  #Used to complement strands of DNA
-  def dna_base_pair
-    {
-        'A' => 'T',
-        'T' => 'A',
-        'G' => 'C',
-        'C' => 'G',
-        '3' => '5',
-        '5' => '3',
-        "`" => "`",
-        "-" => "-",
-        " " => " "
-    }
+  
+  def dna_base_pair(strand)
+    strand.tr!("ATGC35","TACG53")
   end
 
 end
