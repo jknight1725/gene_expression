@@ -8,13 +8,12 @@ include MRNA_helper
 
   attr_reader :transcript
   def initialize(dna_strand)
-    @transcript = ''
     #mrna reads dna template strand in the direction 3`- 5`
     (dna_strand.postfix == three_prime) ?
         #strand is properly oriented
-        dna_strand.bottom_strand.each_char {|c| @transcript << rna_base_pair[c]} :
+        @transcript = rna_base_pair(dna_strand.bottom_strand) :
         #strand needs to be read in reverse
-        dna_strand.corrected_strand.each_char {|c| @transcript << rna_base_pair[c]}
+        @transcript = rna_base_pair(dna_strand.corrected_strand)
     freeze
   end
 
