@@ -7,7 +7,7 @@ include DNA_helper
   def initialize(direction, sequence)
     @sequence = sequence.upcase
     @prefix   = (direction == '3' ? three_prime : five_prime)
-    @postfix  = (direction == '3' ? five_prime : three_prime)
+    @postfix  = (direction == '3' ? five_prime  : three_prime)
     freeze
   end
 
@@ -28,9 +28,7 @@ include DNA_helper
   end
 
   def complement
-    complement = ''
-    sequence.each_char { |c| complement << dna_base_pair[c] }
-    complement
+    dna_base_pair sequence
   end
 
 end
