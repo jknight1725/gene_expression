@@ -20,6 +20,7 @@ module MRNA_helper
       codon = arr.first(3).join
     end
 
+    #TODO: benchmark with each_cons insteard of arr.first(3).join I expect this will have a noticable speed increase
     while(!arr.empty?) do
       codon = arr.first(3).join
       if mRna_to_amino_acid[codon]
